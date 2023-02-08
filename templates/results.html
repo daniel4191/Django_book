@@ -1,0 +1,9 @@
+<h1>{{ question.question_text }}</h1>
+<ul>
+    {% for choice in question.choice_set.all %}
+        <!-- pluralize 필터는 "복수 접미사"를 의미한다. 따라서 앞의 필터의 값이 단수든 복수든 에러없이 출력한다. -->
+        <li>{{ choice.choice_text }} - {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
